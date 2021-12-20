@@ -45,8 +45,8 @@ def stats(update, context):
 
 def start(update, context):
     buttons = button_build.ButtonMaker()
-    buttons.buildbutton("Repo", "https://github.com/SlamDevs/slam-mirrorbot")
-    buttons.buildbutton("Channel", "https://t.me/SlamMirrorUpdates")
+    buttons.buildbutton("All Channel", "https://t.me/SystemErrorNetwork")
+    buttons.buildbutton("Main Channel", "https://t.me/SystemerrorBD")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
@@ -56,7 +56,7 @@ Type /{BotCommands.HelpCommand} to get a list of available commands
         sendMarkup(start_string, context.bot, update, reply_markup)
     else:
         sendMarkup(
-            'Oops! not a Authorized user.\nPlease deploy your own <b>slam-mirrorbot</b>.',
+            'Oops! not a Authorized user.',
             context.bot,
             update,
             reply_markup,
@@ -154,9 +154,9 @@ help_string_telegraph = f'''<br>
 <b>/{BotCommands.StatsCommand}</b>: Show Stats of the machine the bot is hosted on
 '''
 help = Telegraph(access_token=telegraph_token).create_page(
-        title='Slam Mirrorbot Help',
-        author_name='Slam Mirrorbot',
-        author_url='https://github.com/SlamDevs/slam-mirrorbot',
+        title='Bot Commands Help',
+        author_name='@SystemErrorBD',
+        author_url='https://t.me/SystemerrorBD',
         html_content=help_string_telegraph,
     )["path"]
 
@@ -188,7 +188,7 @@ help_string = f'''
 
 def bot_help(update, context):
     button = button_build.ButtonMaker()
-    button.buildbutton("Other Commands", f"https://telegra.ph/{help}")
+    button.buildbutton("Other Commands", f"https://telegra.ph/How-Can-Use-Bot-Command--%E0%A6%95%E0%A6%AD%E0%A6%AC-%E0%A6%AC%E0%A6%9F%E0%A6%B0-%E0%A6%95%E0%A6%AE%E0%A6%A8%E0%A6%A1-%E0%A6%AC%E0%A6%AF%E0%A6%AC%E0%A6%B9%E0%A6%B0-%E0%A6%95%E0%A6%B0%E0%A6%AC%E0%A6%A8-12-20")
     reply_markup = InlineKeyboardMarkup(button.build_menu(1))
     sendMarkup(help_string, context.bot, update, reply_markup)
 
